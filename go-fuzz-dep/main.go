@@ -1,8 +1,8 @@
 // Copyright 2015 go-fuzz project authors. All rights reserved.
 // Use of this source code is governed by Apache 2 LICENSE that can be found in the LICENSE file.
 
-// +build gofuzz
-// +build !gofuzz_libfuzzer
+//go:build gofuzz && !gofuzz_libfuzzer
+// +build gofuzz,!gofuzz_libfuzzer
 
 package gofuzzdep
 
@@ -13,7 +13,7 @@ import (
 	"time"
 	"unsafe"
 
-	. "github.com/dvyukov/go-fuzz/go-fuzz-defs"
+	. "github.com/TomerYakir/go-fuzz/go-fuzz-defs"
 )
 
 func Main(fns []func([]byte) int) {
