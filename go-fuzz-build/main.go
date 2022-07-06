@@ -769,6 +769,9 @@ func (c *Context) copyFile(src, dst string) {
 	if err != nil {
 		c.failf("copyFile: could not read %v", src, err)
 	}
+	dstDir := filepath.Dir(dst)
+	c.mkdirAll(dstDir)
+
 	w, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0700)
 	if err != nil {
 		c.failf("copyFile: could not write %v: %v", dst, err)
